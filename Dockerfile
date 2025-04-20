@@ -1,5 +1,3 @@
-FROM lipanski/docker-static-website:latest
-
-COPY index.html .
-
-CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000"]
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html
+EXPOSE 80
