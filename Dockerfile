@@ -1,9 +1,5 @@
-FROM nginx:alpine
+FROM lipanski/docker-static-website:latest
 
-COPY 404.html /usr/share/nginx/html/index.html
+COPY index.html .
 
-# Optional: Disable logging to make it lighter
-RUN sed -i 's/access_log/#access_log/' /etc/nginx/nginx.conf && \
-    sed -i 's/error_log/#error_log/' /etc/nginx/nginx.conf
-
-EXPOSE 80
+CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000"]
